@@ -1,0 +1,274 @@
+================================================================================
+                          ÍNDICE DE ARQUIVOS
+                  Análise Ambev Long Neck - Insper Junior
+================================================================================
+
+ARQUIVO PRINCIPAL
+================================================================================
+
+📓 analise_longneck.ipynb
+   └─ Jupyter Notebook com análise completa
+      • 15 células (8 markdown + 7 code)
+      • Tamanho: 22 KB
+      • Linguagem: Python 3 + Portuguese (BR)
+      • Status: ✓ Pronto para execução
+
+
+DOCUMENTAÇÃO
+================================================================================
+
+📄 README.md (8,3 KB)
+   └─ Guia completo de uso
+      • Visão geral do caso
+      • Estrutura do notebook (7 seções)
+      • Variáveis e métricas-chave
+      • Análise de risco
+      • Como usar (execução, importação, exportação)
+      • Metodologia
+      • Critérios de decisão
+
+📄 SUMARIO_ANALISE.txt (8,2 KB)
+   └─ Resumo executivo para apresentação
+      • Contexto do caso
+      • Dados de custo detalhados
+      • Simulação de 3 cenários com comparativo
+      • Recomendação final (Cenário C)
+      • Plano de implementação passo-a-passo
+      • Impacto esperado
+      • Variáveis de monitoramento
+      • Contingências
+
+📄 ESPECIFICACOES_TECNICAS.txt (Este documento)
+   └─ Detalhes técnicos do notebook
+      • Estrutura e metadados
+      • Dependências e imports
+      • DataFrames criados
+      • Constantes e parâmetros
+      • Outputs gerados
+      • Configurações de visualização
+      • Fluxo de execução
+      • Como executar
+      • Controle de qualidade
+
+📄 INDICE.txt (Este arquivo)
+   └─ Índice de navegação de todos os arquivos
+
+
+DADOS DE ENTRADA
+================================================================================
+
+📊 Analise_LongNeck_WSNP - Sem repostas.xlsx (Diretório pai)
+   └─ Arquivo Excel com 6 planilhas:
+      
+      1. Cenário atual BR
+         • Dados mensais (Jan/Fev) por região
+         • Regiões: MG, SP, NENO, CO, RJ, SUL, Export
+         • Colunas: Demanda, Produção, Estoque, Suficiência
+      
+      2. Custos de transferência
+         • Matriz de custos R$/HL
+         • SKUs: Colorado, Goose Island, Malzbier
+         • Rotas: Jacarei→[Camaçari, Fonte Mata], Jaguariúna→[Camaçari, Fonte Mata]
+      
+      3. Produção PCP
+         • Produção semanal por planta
+         • Plantas: AQ541, PE541
+         • Período: 4 semanas Fevereiro
+      
+      4. Transferências Programadas
+         • Transferências planejadas
+         • Atualmente: Apenas Goose Island de SP
+      
+      5. Cenário Divulgado
+         • Cenário original (W0-W3 Fevereiro)
+         • 4 SKUs: Patagonia, Goose, Malzbier, Colorado
+         • 5 sub-regiões: Mapapi, NE Norte, NE Sul, NO Araguaia, NO Centro
+      
+      6. Cenário com Nova Demanda
+         • Mesmo que Divulgado
+         • Malzbier +30% vs base
+
+
+ESTRUTURA DE DIRETÓRIOS
+================================================================================
+
+INSPER_JUNIOR_2/
+│
+├── Analise_LongNeck_WSNP - Sem repostas.xlsx
+│   └─ Dados de entrada (Excel)
+│
+└── analise-dados/
+    ├── analise_longneck.ipynb ............ [ARQUIVO PRINCIPAL]
+    │
+    ├── README.md ......................... Guia de uso
+    ├── SUMARIO_ANALISE.txt .............. Resumo executivo
+    ├── ESPECIFICACOES_TECNICAS.txt ...... Detalhes técnicos
+    ├── INDICE.txt ....................... Este arquivo
+    │
+    ├── fig_capacidade_plantas.png ....... [Gráfico 1] (após execução)
+    ├── fig_comparacao_modais.png ........ [Gráfico 2] (após execução)
+    ├── fig_suficiencia_subregiao.png .... [Gráfico 3] (após execução)
+    ├── fig_impacto_bias.png ............. [Gráfico 4] (após execução)
+    └── fig_analise_cenarios.png ......... [Gráfico 5] (após execução)
+
+
+CONTEÚDO DO NOTEBOOK
+================================================================================
+
+Seção 1: INTRODUÇÃO E CONTEXTO
+   • Título: "Análise Caso Ambev Long Neck - Insper Junior"
+   • Objetivo: Otimizar produção e transferência no Nordeste
+   • Contexto: +30% demanda Malzbier, +10% demanda total, Bias +9%
+
+Seção 2: CONTRATO DE DADOS
+   • Plantas: AQ541 (Aquiraz/CE, 50 kHL/mês), PE541 (Nassau/PE, 108 kHL/mês)
+   • Regiões: NENO com 5 sub-regiões (DOI mín 12 dias)
+   • Modais: Cabotagem (25d), Rodoviário (6d, +60% custo, +5% avaria)
+   • SKUs: Patagonia, Goose Island, Malzbier, Colorado (com MACO e custo produção)
+
+Seção 3: ANÁLISE DE CUSTOS
+   • Tabela de custos por rota (Cabo vs Rodo)
+   • MACO e custo de produção por SKU
+   • Cálculo de margem bruta
+
+Seção 4: ANÁLISE DE DEMANDA
+   • Capacidade e utilização de plantas
+   • Demanda cenário base (15.000 HL)
+   • Demanda nova (+30%): 19.500 HL
+   • Gap a cobrir: 4.500 HL
+
+Seção 5: ÁRVORE DE HIPÓTESES
+   • H1: Aceitar aumento de 30%?
+   • H2: Qual plano de produção?
+   • H3: Impacto de custo?
+   • H4: Riscos operacionais?
+
+Seção 6: ANÁLISE BIVARIADA
+   • Trade-off: Custo vs Lead Time
+   • Comparação: Cabotagem vs Rodoviário
+   • Análise de viabilidade
+
+Seção 7: SIMULAÇÃO DE CENÁRIOS
+   • Cenário A: Realocação Total (R$ 71,41/HL)
+   • Cenário B: Rodoviário Emergencial (R$ 132,61/HL)
+   • Cenário C: Combinação (R$ 102,01/HL) ← RECOMENDADO
+
+Seção 8: ANÁLISE COMPARATIVA
+   • DataFrame resumido dos 3 cenários
+   • 4 gráficos: custo total, custo/HL, scatter, recomendação
+
+Seção 9: RECOMENDAÇÃO FINAL
+   • Implementar Cenário C
+   • Plano de implementação (W1-W4)
+   • Ações imediatas (PCP, Logística, Comercial, Finance)
+   • Impacto esperado
+
+
+GUIA RÁPIDO DE USO
+================================================================================
+
+Para Iniciantes:
+   1. Leia: README.md (orientação geral)
+   2. Leia: SUMARIO_ANALISE.txt (contexto e recomendação)
+   3. Execute: jupyter notebook analise_longneck.ipynb
+   4. Explore: células uma por uma
+
+Para Analistas:
+   1. Execute todo o notebook
+   2. Examine DataFrames (df_custos, df_plantas, df_resumo_cenarios)
+   3. Adapte code para suas próprias análises
+   4. Exporte gráficos para relatórios
+
+Para Apresentadores:
+   1. Extraia gráficos (5 PNG files)
+   2. Use SUMARIO_ANALISE.txt como script
+   3. Destaque Cenário C como recomendação
+   4. Apresente plano de implementação
+
+
+RECOMENDAÇÃO RESUMIDA
+================================================================================
+
+CENÁRIO C - COMBINAÇÃO (50% Realocação + 50% Rodoviário)
+
+Ações:
+  • Aumentar Malzbier PE541: +2.250 HL/semana (realocação)
+  • Reduzir Patagonia AQ541: -2.250 HL/semana
+  • Transferência Rodo SP→BA: +590 HL/semana (4 semanas)
+
+Custo: R$ 458.858 (R$ 102/HL)
+  ✓ 23% menor que Cenário B
+  ✓ Complexidade média
+  ✓ Flexibilidade alta
+
+Lead Time: 6 dias
+  ✓ Atende DOI mínimo (< 12 dias)
+  ✓ Seguro operacionalmente
+
+Implementação: Imediata (Fevereiro)
+Status: PRONTO ✓
+
+
+PRÓXIMAS ETAPAS
+================================================================================
+
+Fase 1: Aprovação
+   □ Apresentar análise à liderança
+   □ Obter aprovação executiva
+   □ Aprovar orçamento (R$ 458.858)
+
+Fase 2: Comissionamento PCP
+   □ Ajustar produção AQ541/PE541
+   □ Comunicar ao PCP
+   □ Validar capacidade
+
+Fase 3: Contratação Logística
+   □ Contratar modal rodoviário
+   □ SLA: 590 HL/semana, 6 dias entrega, ≤5% avaria
+
+Fase 4: Comunicação
+   □ Avisar comercial NENO
+   □ Informar S&OP
+   □ Preparar contingências
+
+Fase 5: Execução e Monitoramento
+   □ Iniciar Fevereiro W1
+   □ Monitor diário: demanda real vs WSNP
+   □ Monitor semanal: estoque, DOI
+   □ Monitor mensal: custo real vs orçado
+
+
+CONTATO E SUPORTE
+================================================================================
+
+Dúvidas sobre Análise:
+  → Revisar seção correspondente em README.md
+  → Consultar SUMARIO_ANALISE.txt para contexto
+  → Examinar células de código no notebook
+
+Problemas Técnicos:
+  → Verificar ESPECIFICACOES_TECNICAS.txt
+  → Validar Python 3.7+ instalado
+  → Instalar dependências: pandas, numpy, matplotlib, seaborn, openpyxl
+
+Feedback e Sugestões:
+  → Este notebook é versão 1.0
+  → Sugestões para melhorias bem-vindas
+  → Considerar análises futuras para Março (+10% demanda)
+
+
+LICENÇA E PROPRIEDADE
+================================================================================
+
+Propriedade: Ambev S.A. e Insper Junior
+Uso: Confidencial - Fins educacionais/operacionais apenas
+Data: 11 de março de 2026
+Status: ✓ Análise Concluída - Pronto para Implementação
+
+Desenvolvido com Python 3, Pandas, Matplotlib, Seaborn
+Formato: Jupyter Notebook v4.4 (compatível com JupyterLab, VSCode, Colab)
+
+
+================================================================================
+                    FIM DO ÍNDICE - BOA ANÁLISE!
+================================================================================
