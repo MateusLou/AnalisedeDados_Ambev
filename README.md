@@ -54,7 +54,7 @@ Trade-offs principais:
 |---|---|---|
 | Custo | R$ 84,58/HL | R$ 135,33/HL |
 | Lead time | 25 dias | 6 dias |
-| DOI | Viola (mín. 15d) | Atende |
+| DOI | Viola (mín. 12d) | Atende |
 
 ### 5. Simulação de Cenários
 
