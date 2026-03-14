@@ -3,7 +3,7 @@
 > **Projeto:** Processo Seletivo Insper Junior — Engenharia de Dados
 > **Cliente:** Ambev
 > **Período analisado:** Fevereiro–Maio de 2026
-> **Autor:** Mateus Loureiro
+> **Autor:** Mateus Loureiro, Nicole Lima da Silva, Bianca dos Reis Habr
 
 ---
 
